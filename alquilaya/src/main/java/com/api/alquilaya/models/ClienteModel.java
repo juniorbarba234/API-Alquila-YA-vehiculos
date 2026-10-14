@@ -3,6 +3,7 @@ package com.api.alquilaya.models;
 import jakarta.persistence.*;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 @Entity
 @Table(name = "cliente")
@@ -37,6 +38,7 @@ public class ClienteModel {
     @JsonIgnoreProperties("cliente")
     private List<AlquilerModel> alquileres;
 
+    @JsonCreator
     public ClienteModel() {
     }
 
@@ -127,3 +129,4 @@ public class ClienteModel {
         }
     }
 }
+

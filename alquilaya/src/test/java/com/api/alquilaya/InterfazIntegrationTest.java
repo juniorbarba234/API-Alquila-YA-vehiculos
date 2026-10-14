@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.containsString;
 
@@ -25,6 +26,17 @@ class InterfazIntegrationTest {
     @Autowired ClienteService clientes;
     @Autowired VehiculoService vehiculos;
     @Autowired AlquilerService alquileres;
+
+    @Test
+    void registraAlquilerDesdeJsonDeLaInterfaz() throws Exception {
+        VehiculoModel v = vehiculo();
+        ClienteModel c = cliente();
+        String json = "{\"cliente\":{\"idCliente\":" + c.getIdCliente()
+                + "},\"vehiculo\":{\"idVehiculo\":" + v.getIdVehiculo()
+                + "},\"fechaAlquiler\":\"2026-10-14\",\"fechaDevolucion\":\"2026-10-17\"}";
+        var result = mvc.perform(post("/api/alquileres").contentType("application/json").content(json)).andReturn();
+        assertEquals(200, result.getResponse().getStatus(), () -> String.valueOf(result.getResolvedException()));
+    }
 
     @Test
     void sirveLaInterfazYLasListas() throws Exception {
@@ -90,3 +102,4 @@ class InterfazIntegrationTest {
         return a;
     }
 }
+
