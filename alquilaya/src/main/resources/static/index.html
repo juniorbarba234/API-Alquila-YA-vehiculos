@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlquilaYa | Gestión de vehículos</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header><div class="cabecera"><div><h1>AlquilaYa</h1><p>Alquiler de vehículos</p></div><button id="actualizar" type="button">Actualizar datos</button></div></header>
+  <main>
+    <nav aria-label="Secciones">
+      <button type="button" data-seccion="alquileres" aria-pressed="true">Alquileres</button>
+      <button type="button" data-seccion="vehiculos" aria-pressed="false">Vehículos</button>
+      <button type="button" data-seccion="clientes" aria-pressed="false">Clientes</button>
+      <button type="button" data-seccion="oficinas" aria-pressed="false">Oficinas</button>
+    </nav>
+    <p id="mensaje" role="status" aria-live="polite">Cargando datos…</p>
+    <section id="alquileres">
+      <h2>Alquileres</h2><p>Selecciona un cliente y un vehículo disponible para registrar un alquiler.</p>
+      <form id="form-alquileres"><h3>Nuevo alquiler</h3><div class="campos">
+        <label>Cliente<select name="cliente" required></select></label>
+        <label>Vehículo disponible<select name="vehiculo" required></select></label>
+        <label>Fecha de alquiler<input name="fechaAlquiler" type="date" required></label>
+        <label>Fecha de devolución<input name="fechaDevolucion" type="date" required></label>
+      </div><p id="estimacion">El total se calcula según los días y la tarifa diaria.</p><button type="submit">Registrar alquiler</button></form>
+      <h3>Alquileres registrados</h3><div class="tabla"><table><thead><tr><th>ID</th><th>Cliente</th><th>Vehículo</th><th>Desde</th><th>Hasta</th><th>Total</th><th>Estado</th><th>Acción</th></tr></thead><tbody id="lista-alquileres"></tbody></table></div>
+    </section>
+    <section id="vehiculos" hidden>
+      <h2>Vehículos</h2><p>Registra los vehículos y su tarifa por día. Primero debe existir una oficina.</p>
+      <form id="form-vehiculos"><h3>Registrar vehículo</h3><div class="campos">
+        <label>Marca<input name="marca" maxlength="50" required></label><label>Modelo<input name="modelo" maxlength="50" required></label>
+        <label>Año<input name="anio" type="number" min="1900" max="2100" required></label><label>Matrícula<input name="matricula" maxlength="20" required></label>
+        <label>Tarifa diaria<input name="tarifaDiaria" type="number" min="0.01" step="0.01" required></label>
+        <label>Oficina<select name="oficina" required></select></label>
+        <label>Estado<select name="estado"><option>Disponible</option><option>Mantenimiento</option></select></label>
+      </div><button type="submit">Guardar vehículo</button><button type="button" class="secundario cancelar" hidden>Cancelar edición</button></form>
+      <h3>Vehículos registrados</h3><div class="tabla"><table><thead><tr><th>Matrícula</th><th>Vehículo</th><th>Año</th><th>Tarifa diaria</th><th>Oficina</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="lista-vehiculos"></tbody></table></div>
+    </section>
+    <section id="clientes" hidden>
+      <h2>Clientes</h2><p>Registra los datos del cliente antes de crear su alquiler.</p>
+      <form id="form-clientes"><h3>Registrar cliente</h3><div class="campos">
+        <label>Nombre<input name="nombre" maxlength="50" required></label><label>Apellido<input name="apellido" maxlength="50" required></label>
+        <label>DNI (9 caracteres)<input name="dni" minlength="9" maxlength="9" required></label>
+        <label>Correo electrónico<input name="email" type="email" maxlength="100" required></label>
+        <label>Licencia de conducir<input name="licenciaConducir" maxlength="50" required></label><label>Teléfono<input name="telefono" type="tel" maxlength="20"></label>
+      </div><button type="submit">Guardar cliente</button><button type="button" class="secundario cancelar" hidden>Cancelar edición</button></form>
+      <h3>Clientes registrados</h3><div class="tabla"><table><thead><tr><th>Nombre</th><th>DNI</th><th>Correo</th><th>Licencia</th><th>Teléfono</th><th>Acciones</th></tr></thead><tbody id="lista-clientes"></tbody></table></div>
+    </section>
+    <section id="oficinas" hidden>
+      <h2>Oficinas</h2><p>Cada vehículo pertenece a una oficina.</p>
+      <form id="form-oficinas"><h3>Registrar oficina</h3><div class="campos">
+        <label>Nombre<input name="nombre" maxlength="100" required></label><label>Dirección<input name="direccion" maxlength="150" required></label>
+        <label>Ciudad<input name="ciudad" maxlength="100" required></label><label>Región<input name="region" maxlength="100" required></label>
+      </div><button type="submit">Guardar oficina</button><button type="button" class="secundario cancelar" hidden>Cancelar edición</button></form>
+      <h3>Oficinas registradas</h3><div class="tabla"><table><thead><tr><th>Nombre</th><th>Dirección</th><th>Ciudad</th><th>Región</th><th>Acciones</th></tr></thead><tbody id="lista-oficinas"></tbody></table></div>
+    </section>
+    <footer>API Alquila YA (vehiculos)</footer>
+  </main>
+</body>
+</html>

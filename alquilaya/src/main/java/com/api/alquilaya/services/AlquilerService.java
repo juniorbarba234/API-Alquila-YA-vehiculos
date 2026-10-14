@@ -103,6 +103,10 @@ public class AlquilerService {
     public AlquilerModel completar(Long id) {
         AlquilerModel alquiler = buscarPorId(id);
 
+        if (!"Activo".equals(alquiler.getEstado())) {
+            throw new IllegalArgumentException("El alquiler ya no esta activo");
+        }
+
         alquiler.setEstado("Completado");
 
         VehiculoModel vehiculo = alquiler.getVehiculo();

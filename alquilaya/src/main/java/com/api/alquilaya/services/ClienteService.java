@@ -55,6 +55,9 @@ public class ClienteService {
     }
 
     private void copiarDatos(ClienteModel cliente, ClienteModel datos) {
+        if (datos.getDni() != null) {
+            cliente.setDni(datos.getDni());
+        }
         cliente.setNombre(datos.getNombre());
         cliente.setApellido(datos.getApellido());
         cliente.setEmail(datos.getEmail());

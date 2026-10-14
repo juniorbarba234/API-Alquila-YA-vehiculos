@@ -1,0 +1,29 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #243247; background: #f4f6f8; line-height: 1.5; }
+header { background: #234f78; color: white; padding: 22px 24px; }
+.cabecera { max-width: 1080px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+h1 { margin: 0; font-size: 28px; } header p { margin: 0; color: #e0ebf5; }
+main { max-width: 1128px; margin: auto; padding: 24px; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #ccd5df; padding-bottom: 16px; }
+button { background: #234f78; color: white; border: 1px solid #234f78; border-radius: 5px; padding: 10px 16px; cursor: pointer; font: inherit; }
+button:hover { background: #173957; } button:disabled { opacity: .55; cursor: not-allowed; }
+nav button, .secundario, #actualizar { background: white; color: #234f78; }
+nav button[aria-pressed="true"] { background: #234f78; color: white; }
+nav button:hover, .secundario:hover, #actualizar:hover { background: #e6eef6; color: #183b5c; }
+:focus-visible { outline: 3px solid #dc9800; outline-offset: 3px; }
+h2 { font-size: 24px; margin: 24px 0 4px; } h3 { font-size: 18px; margin: 0 0 16px; }
+section > p { margin: 0 0 20px; color: #536277; }
+form { background: white; border: 1px solid #d6dee7; border-radius: 6px; padding: 22px; margin-bottom: 28px; }
+.campos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; margin-bottom: 20px; }
+label { font-size: 14px; font-weight: bold; display: flex; flex-direction: column; gap: 6px; }
+input, select { width: 100%; min-height: 42px; border: 1px solid #aebccd; padding: 8px 10px; border-radius: 4px; font: inherit; background: white; color: #243247; }
+.tabla { overflow-x: auto; background: white; border: 1px solid #d6dee7; border-radius: 5px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
+th { background: #eaf0f6; font-weight: bold; } td, th { padding: 12px; border-bottom: 1px solid #e1e6ed; }
+td button { font-size: 13px; padding: 5px 9px; margin: 3px; } .acciones { min-width: 160px; }
+.peligro { background: white; color: #a22525; border-color: #dcb1b1; } .peligro:hover { background: #fff0f0; }
+#mensaje { padding: 10px 14px; border-radius: 4px; background: #e7f2ec; color: #20573b; }
+#mensaje.error { background: #fceaea; color: #982626; } #mensaje:empty { display: none; }
+.vacio { text-align: center; color: #607086; padding: 25px; } footer { color: #6b7788; font-size: 13px; margin-top: 32px; }
+[hidden] { display: none !important; }
+@media (max-width: 650px) { main { padding: 16px; } .campos { grid-template-columns: 1fr; } form { padding: 16px; } .cabecera { align-items: flex-start; } #actualizar { font-size: 13px; padding: 8px; } nav button { flex: 1; padding: 8px; } }
